@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td>
+            <a th:text="${user.id}"></a>
+        </td>
+        <td>
+            <a th:text="${user.name}"></a>
+        </td>
+        <td>
+            <a th:text="${user.mail}"></a>
+        </td>
+        <td>
+            <a sec:authorize="hasAuthority('ADMIN')" th:href="@{'recovery/' + ${user.id}}"> New password </a>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</table>
+</body>
+</html>

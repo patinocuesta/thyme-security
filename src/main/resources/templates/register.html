@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <title>Spring Security MDP </title>
+</head>
+<body>
+
+<form th:action="@{/register}" method="get">
+    <div><label> User Name :</label></div>
+    <div><input type="text" name="username"/></div>
+    <div><label> Email :</label></div>
+    <div><input type="text" name="mail"/></div>
+    <div><label> Password: </label></div>
+    <div><input type="password" name="password"/></div>
+    <div><input type="submit" value="Sign in"/></div>
+</form>
+    <div th:text="${message}"></div>
+    <div th:if="${param.error}">
+        Login incorrect.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+</body>
+</html>

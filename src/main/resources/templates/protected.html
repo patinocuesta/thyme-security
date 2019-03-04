@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Spring Web : s04.dblogin</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<h1>Spring security: db login</h1>
+	<div sec:authorize="isAuthenticated()" >
+		<a th:href="@{/logout}">Logout</a>
+	</div>
+	<p>This is a protected page</p>
+   <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+   <a th:href="@{/admin}">Go to admin</a>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Log Out"/>
+        </form>
+</body>
+</html>
